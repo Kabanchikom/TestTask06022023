@@ -1,4 +1,4 @@
-# mekashron
+# TestTask06022023
 
 ## Project setup
 ```

@@ -3,12 +3,14 @@ using TestTask06022023.IcuTech;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCorsConfiguration(builder.Configuration);
 builder.Services.AddIcuTech();
+builder.Services.AddCors();
 
 var app = builder.Build();
 
-app.UseCors(CorsSetupExtensions.FrontEnd);
+app.UseCors(x => x.AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 app.MapPost("/api/login", async (
     IcuTechService icuTechService,

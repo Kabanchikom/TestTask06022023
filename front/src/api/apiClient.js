@@ -3,9 +3,10 @@ const baseUrl = process.env.VUE_APP_ROOT_API;
 const login = async (username, password) =>
     await fetch(`${baseUrl}/login?` + new URLSearchParams({
         username: username,
-        password: password
+        password: password,
     }), {
-        method: 'POST'
+        method: 'POST',
+        mode: 'cors'
     }).then(async response => {
         const isJson = response.headers.get('content-type')?.includes('application/json');
         const data = isJson ? await response.json() : null;
